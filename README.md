@@ -12,7 +12,7 @@ To write a yacc program to recognize a valid arithmetic expression that uses ope
 6.	Compile the yacc program with yacc compiler to produce output file as y.tab.c. eg $ yacc –d arith_id.y
 7.	Compile these with the C compiler as gcc lex.yy.c y.tab.c
 8.	Enter an arithmetic expression as input and the tokens are identified as output.
-# PROGRAM:
+# PROGRAM
 ```
 %{
 /* This LEX program returns the tokens for the expression */
@@ -24,7 +24,7 @@ To write a yacc program to recognize a valid arithmetic expression that uses ope
 "-" {printf("\n Operator is MINUS");}
 "/" {printf("\n Operator is DIVISION");}
 "*" {printf("\n Operator is MULTIPLICATION");}
-[a-zA-Z]*[0-9]* {
+[a-zA-Z][0-9] {
 printf("\n Identifier is %s",yytext);
 return ID; }
 . return yytext[0];
@@ -60,14 +60,11 @@ do {
 yyparse();
 }while(!feof(yyin)); }
  yyerror(char*s)
-{
 }
 ```
 # OUTPUT
+![Screenshot 2024-10-24 140137](https://github.com/user-attachments/assets/3cc44a29-8f82-4844-b5d2-658b9643993c)
 
-![Screenshot 2024-10-17 174516](https://github.com/user-attachments/assets/e6a3e160-785f-4d90-9644-27cc6f206fe1)
 
-# RESULT
-
+# RESULT:
 A YACC program to recognize a valid arithmetic expression that uses operator +,-,* and / is executed successfully and the output is verified.
-
